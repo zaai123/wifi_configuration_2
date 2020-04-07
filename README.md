@@ -66,9 +66,9 @@ WifiConfiguration.disableWifi();
 ````
 
 ## Check signal level of every network
-ListView example of wifiNetworks
-SignalLevel = 5 is maximum
-SignalLevel = 0 is minimum
+# ListView example of wifiNetworks
+# SignalLevel = 5 is maximum
+# SignalLevel = 0 is minimum
 ```dart
 ListView.builder(
                       itemBuilder: (context, index) {
