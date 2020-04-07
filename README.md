@@ -65,6 +65,24 @@ Disable Wifi
 WifiConfiguration.disableWifi();
 ````
 
+##Check signal level of every network
+ListView example of wifiNetworks
+SignalLevel = 5 is maximum
+SignalLevel = 0 is minimum
+```dart
+ListView.builder(
+                      itemBuilder: (context, index) {
+                        WifiNetwork wifiNetwork = wifiNetworkList[index];
+                        return ListTile(
+                          leading: Text(wifiNetwork.signalLevel),
+                          title: Text(wifiNetwork.ssid),
+                          subtitle: Text(wifiNetwork.bssid),
+                        );
+                      },
+                      itemCount: wifiNetworkList.length,
+                    ),
+```
+
 ```dart
     WifiConnectionStatus connectionStatus = await WifiConfiguration.connectToWifi("ssidName", "passName", "your android packagename");
     //This will return state of a connection
