@@ -29,13 +29,33 @@ Add below Permissions to your manifist.xml file -
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 ```
 
+Import package
+```dart
+import 'wifi_configuration_2.dart';
+```
 
+Get WIFI network list
+
+````dart
+ wifiNetworkList = await WifiConfiguration.getWifiList();
+    setState(() {});
+````
+
+Check your connection is slow or fast
+```dart
+WifiConfiguration.isConnectionFast().then((value){
+                          print('Connection type: ${value.toString()}');
+                        });
+```
+
+Check your connection type
+````dart
+  WifiConfiguration.getConnectionType().then((value){
+                          print('Connection type: ${value.toString()}');
+                        });
+````
 
 ```dart
-  import 'wifi_configuration_2.dart';
-  
-  
-  
     WifiConnectionStatus connectionStatus = await WifiConfiguration.connectToWifi("ssidName", "passName", "your android packagename");
     //This will return state of a connection
     //Package name is required to redirect user to application permission settings page to let user allow location permission
