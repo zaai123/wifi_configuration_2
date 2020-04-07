@@ -17,7 +17,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36eaa994-8d94-4b26-ad03-1254c90d5e49" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +72,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586279744489</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Install information updated">
+      <created>1586280089303</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586280089303</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Install information updated">
+      <created>1586280154768</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586280154768</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnloadedModulesList">
@@ -90,6 +105,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Check connection type&#10;Check your connection is fast or slow&#10;Check your connection IP" />
-    <option name="LAST_COMMIT_MESSAGE" value="Check connection type&#10;Check your connection is fast or slow&#10;Check your connection IP" />
+    <MESSAGE value="Install information updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Install information updated" />
   </component>
 </project>

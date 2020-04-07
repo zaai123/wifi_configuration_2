@@ -1,9 +1,9 @@
 name: wifi_configuration_2
 description: Flutter Wifi Plugin.
 
-version: 1.0.0
+version: 1.0.1
 documentation: "https://flutter.dev/docs"
-homepage: "https://github.com/RohitKumarMishra/wifi_configuration"
+homepage: "https://github.com/zaai123/wifi_configuration_2"
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

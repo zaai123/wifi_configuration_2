@@ -1,4 +1,4 @@
-# wifi_configuration
+## wifi_configuration_2
 
 A new Flutter plugin.
 
