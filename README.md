@@ -55,6 +55,16 @@ Check your connection type
                         });
 ````
 
+Enable wifi
+````dart
+ WifiConfiguration.enableWifi();
+````
+
+Disable Wifi
+````dart
+WifiConfiguration.disableWifi();
+````
+
 ```dart
     WifiConnectionStatus connectionStatus = await WifiConfiguration.connectToWifi("ssidName", "passName", "your android packagename");
     //This will return state of a connection
