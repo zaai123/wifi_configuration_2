@@ -114,9 +114,15 @@ class WifiNetwork {
   String frequency;
   String level;
   String security;
+  String signalLevel;
 
   WifiNetwork(
-      {this.ssid, this.bssid, this.frequency, this.level, this.security});
+      {this.ssid,
+      this.bssid,
+      this.frequency,
+      this.level,
+      this.security,
+      this.signalLevel});
 
   factory WifiNetwork.fromMap(Map<dynamic, dynamic> map) {
     return WifiNetwork(
@@ -124,7 +130,8 @@ class WifiNetwork {
         frequency: map['frequency'],
         level: map['level'],
         security: map['security'],
-        ssid: map['ssid']);
+        ssid: map['ssid'],
+        signalLevel: map['signal_level']);
   }
 }
 

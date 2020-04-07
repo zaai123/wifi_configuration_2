@@ -469,4 +469,18 @@ public final class WifiUtils implements WifiConnectorBuilder,
         } // for now eat exceptions
         return "";
     }
+
+    public int calculateSignalLevel(int rssi, int numLevels) {
+        if (rssi <= -100) {
+            return 0;
+        } else if (rssi >= -55) {
+            return numLevels - 1;
+        } else {
+            float inputRange = (-55 - -100);
+            float outputRange = (numLevels - 1);
+            if (inputRange != 0)
+                return (int) ((float) (rssi - -100) * outputRange / inputRange);
+        }
+        return 0;
+    }
 }

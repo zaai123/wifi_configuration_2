@@ -26,14 +26,12 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    getConnectionState();
+    //getConnectionState();
     checkConnection();
   }
 
   void getConnectionState() async {
-    var listAvailableWifi = await WifiConfiguration.getWifiList();
 
-    print("get wifi list : " + listAvailableWifi.toString());
     WifiConnectionStatus connectionStatus =
         await WifiConfiguration.connectToWifi(
             "DarkBe@rs", "DarkBe@rs", "com.example.wifi_configuration_example");
@@ -129,7 +127,7 @@ class _MyAppState extends State<MyApp> {
                       itemBuilder: (context, index) {
                         WifiNetwork wifiNetwork = wifiNetworkList[index];
                         return ListTile(
-                          leading: Text(wifiNetwork.level),
+                          leading: Text(wifiNetwork.signalLevel),
                           title: Text(wifiNetwork.ssid),
                           subtitle: Text(wifiNetwork.bssid),
                         );
@@ -153,6 +151,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> getWifiList() async {
     wifiNetworkList = await WifiConfiguration.getWifiList();
+    print('Network list lenght: ${wifiNetworkList.length.toString()}');
     setState(() {});
   }
 }

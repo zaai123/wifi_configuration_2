@@ -247,6 +247,7 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
                 map.put("ssid", wifiName.SSID);
                 map.put("bssid", wifiName.BSSID);
                 map.put("security", wifiName.capabilities);
+                map.put("signal_level", String.valueOf((wifiUtils.calculateSignalLevel(wifiName.level, 5) + 1)));
                 map.put("frequency", String.valueOf(wifiName.frequency));
                 map.put("level", String.valueOf(wifiName.level));
                 wifiList.add(map);
