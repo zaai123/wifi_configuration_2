@@ -5,7 +5,7 @@ A new Flutter plugin.
 ## Getting Started
 
 This plugin is a updated version of wifi_configuration
-This plugin allows Flutter apps to get available wifiObject list,
+This plugin allows Flutter apps to get available WifiNetwork list where you can get almost all the information about AP accessing to WifiNetwork object,
 user can connect to wifi with ssid and password.
 This plugin works only for Android.
 iOS will be released later.

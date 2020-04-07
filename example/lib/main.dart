@@ -20,11 +20,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
 
+  List<WifiNetwork> wifiNetworkList = List();
+  bool isLoaded = false;
+
   @override
   void initState() {
     super.initState();
     getConnectionState();
-
+    checkConnection();
   }
 
   void getConnectionState() async {
@@ -75,25 +78,81 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: FlatButton(
-            color: Colors.red,
-            child: Text("connect"),
-            onPressed: () async {
-              WifiConnectionObject connectionStatus =
-                  await WifiConfiguration.connectedToWifi();
-              print("Ip address : ${connectionStatus.ip}");
-              WifiConfiguration.getConnectionType().then((value){
-                print('Connection type: ${value.toString()}');
-              });
-              WifiConfiguration.isConnectionFast().then((value){
-                print('Is connection fast: ${value.toString()}');
-              });
+        body: wifiNetworkList.isEmpty && isLoaded
+            ? Center(
+                child: FlatButton(
+                  color: Colors.red,
+                  child: Text("connect"),
+                  onPressed: () async {
+                    WifiConnectionObject connectionStatus =
+                        await WifiConfiguration.connectedToWifi();
+                    print("Ip address : ${connectionStatus.ip}");
+                    WifiConfiguration.getConnectionType().then((value) {
+                      print('Connection type: ${value.toString()}');
+                    });
+                    WifiConfiguration.isConnectionFast().then((value) {
+                      print('Is connection fast: ${value.toString()}');
+                    });
+                  },
+                ),
+              )
+            : Column(
+                children: <Widget>[
+                  FlatButton(
+                      onPressed: () {
+                        WifiConfiguration.enableWifi();
+                      },
+                      child: Text('Wifi enable')),
+                  FlatButton(
+                      onPressed: () {
+                        WifiConfiguration.disableWifi();
+                      },
+                      child: Text('Wifi disable')),
+                  FlatButton(
+                      onPressed: () {
+                        WifiConfiguration.getConnectionType().then((value){
+                          print('Connection type: ${value.toString()}');
+                        });
 
-            },
-          ),
-        ),
+                        WifiConfiguration.isConnectionFast().then((value){
+                          print('Connection type: ${value.toString()}');
+                        });
+
+
+                      },
+                      child: Text('Print information')),
+
+                  Divider(),
+
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        WifiNetwork wifiNetwork = wifiNetworkList[index];
+                        return ListTile(
+                          leading: Text(wifiNetwork.level),
+                          title: Text(wifiNetwork.ssid),
+                          subtitle: Text(wifiNetwork.bssid),
+                        );
+                      },
+                      itemCount: wifiNetworkList.length,
+                    ),
+                  ),
+                ],
+              ),
       ),
     );
+  }
+
+  void checkConnection() async {
+    WifiConnectionObject wifiConnectionObject =
+        await WifiConfiguration.connectedToWifi();
+    if (wifiConnectionObject != null) {
+      getWifiList();
+    }
+  }
+
+  Future<void> getWifiList() async {
+    wifiNetworkList = await WifiConfiguration.getWifiList();
+    setState(() {});
   }
 }

@@ -174,9 +174,13 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
             requestLocationPermissionForConnectedWifiName();
 
         } else if (Constant.methodCalled.method.equals("getConnectionType")) {
-            getConnectionType();
+            Constant.result.success(getConnectionType());
         } else if (Constant.methodCalled.method.equals("isConnectionFast")) {
-            isConnectionFast();
+            Constant.result.success(isConnectionFast());
+        }else if (Constant.methodCalled.method.equals("enableWifi")) {
+           enableWifi();
+        }else if (Constant.methodCalled.method.equals("disableWifi")) {
+            disableWifi();
         }
     }
 
@@ -279,16 +283,24 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
     }
 
 
+    public static void enableWifi(){
+        wifiUtils.enableWifi();
+    }
+
+    public static void disableWifi(){
+        wifiUtils.disableWifi();
+    }
+
     public static void locationPermissionCallbck(boolean success) {
         getWifiData(success);
     }
 
-    public static String getConnectionType() {
-        /*if (wifiUtils.isConnected()) {
+    public static int getConnectionType() {
+        if (wifiUtils.isConnected()) {
             if (wifiUtils.isConnectedWifi())
                 return 0;
             else return 1;
-        } else */return "2";
+        } else  return 2;
     }
 
     public static int isConnectionFast() {
@@ -400,7 +412,7 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
                 return connectionList;
             } else {
                 connectedWifi = connectedWifi.replace("\"", "");
-                connectionList.put("ip", String.valueOf(info.getIpAddress()));
+                connectionList.put("ip", wifiUtils.getIPAddress(true));
                 connectionList.put("ssid", connectedWifi);
                 connectionList.put("mac", info.getMacAddress());
                 connectionList.put("frequency", String.valueOf(info.getFrequency()));

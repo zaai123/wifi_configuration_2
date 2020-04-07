@@ -83,19 +83,26 @@ class WifiConfiguration {
   }
 
   static Future<ConnectionType> getConnectionType() async {
-    final String connection = await _channel.invokeMethod('getConnectionType');
-    print('Connection: ${connection.toString()}');
-    return connection == '0'
+    final int connection = await _channel.invokeMethod('getConnectionType');
+    //print('Connection: ${connection.toString()}');
+    return connection == 0
         ? ConnectionType.WIFI
-        : connection == '1'
+        : connection == 1
             ? ConnectionType.MOBILE
             : ConnectionType.NOT_CONNECTED;
-
   }
 
   static Future<bool> isConnectionFast() async {
     final int checkConnection = await _channel.invokeMethod('isConnectionFast');
     return checkConnection == 1 ? true : false;
+  }
+
+  static Future<void> enableWifi() async {
+    _channel.invokeMethod('enableWifi');
+  }
+
+  static Future<void> disableWifi() async {
+    _channel.invokeMethod('disableWifi');
   }
 }
 
