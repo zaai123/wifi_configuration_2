@@ -1,6 +1,6 @@
 ## wifi_configuration_2
 
-A new Flutter plugin.
+Wifi plugin for flutter 
 
 ## Getting Started
 
