@@ -65,6 +65,13 @@ Disable Wifi
 WifiConfiguration.disableWifi();
 ````
 
+Check internet connection
+````dart
+ WifiConfiguration.checkConnection().then((value){
+      print('Value: ${value.toString()}');
+    });
+````
+
 ## Check signal level of every network
 #### ListView example of wifiNetworks
 #### SignalLevel = 5 is maximum

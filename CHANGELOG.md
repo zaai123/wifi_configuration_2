@@ -1,5 +1,7 @@
-## 1.0.2
+## 1.0.5
 
-Added location turn on feature for android also added connection status as enum that will help to cover all 
-available response cases from plugin.
-Added plugin to github.
+## Check internet connection 
+## Check signal level of every network
+#### ListView example of wifiNetworks
+#### SignalLevel = 5 is maximum
+#### SignalLevel = 0 is minimum

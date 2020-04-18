@@ -104,6 +104,11 @@ class WifiConfiguration {
   static Future<void> disableWifi() async {
     _channel.invokeMethod('disableWifi');
   }
+
+  static Future<bool> checkConnection() async {
+    final bool isConnected = await _channel.invokeMethod('checkConnection');
+    return isConnected;
+  }
 }
 
 enum ConnectionType { WIFI, MOBILE, NOT_CONNECTED }

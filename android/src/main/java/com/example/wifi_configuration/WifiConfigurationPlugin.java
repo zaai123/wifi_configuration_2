@@ -181,6 +181,8 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
            enableWifi();
         }else if (Constant.methodCalled.method.equals("disableWifi")) {
             disableWifi();
+        }else if (Constant.methodCalled.method.equals("checkConnection")) {
+            Constant.result.success(checkConnection());
         }
     }
 
@@ -257,6 +259,13 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
         return wifiList;
     }
 
+    private static boolean checkConnection(){
+        if (wifiUtils.isConnected()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     private void requestLocationPermission() {
 

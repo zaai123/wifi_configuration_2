@@ -346,7 +346,7 @@ public final class WifiUtils implements WifiConnectorBuilder,
      * @param context
      * @return
      */
-    public  boolean isConnected(){
+    public boolean isConnected(){
         NetworkInfo info = Connectivity.getNetworkInfo(mContext);
         return (info != null && info.isConnected());
     }

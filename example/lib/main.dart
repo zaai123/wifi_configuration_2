@@ -142,6 +142,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   void checkConnection() async {
+
+    WifiConfiguration.checkConnection().then((value){
+      print('Value: ${value.toString()}');
+    });
+
     WifiConnectionObject wifiConnectionObject =
         await WifiConfiguration.connectedToWifi();
     if (wifiConnectionObject != null) {
