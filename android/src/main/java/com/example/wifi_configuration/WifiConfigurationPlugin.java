@@ -26,7 +26,6 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.wifi_configuration.connect.ConnectionSuccessListener;
 import com.example.wifi_configuration.manager.WifiUtils;
-import com.example.wifi_configuration.util.Connectivity;
 import com.example.wifi_configuration.util.Constant;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationRequest;
@@ -177,12 +176,14 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
             Constant.result.success(getConnectionType());
         } else if (Constant.methodCalled.method.equals("isConnectionFast")) {
             Constant.result.success(isConnectionFast());
-        }else if (Constant.methodCalled.method.equals("enableWifi")) {
-           enableWifi();
-        }else if (Constant.methodCalled.method.equals("disableWifi")) {
+        } else if (Constant.methodCalled.method.equals("enableWifi")) {
+            enableWifi();
+        } else if (Constant.methodCalled.method.equals("disableWifi")) {
             disableWifi();
-        }else if (Constant.methodCalled.method.equals("checkConnection")) {
+        } else if (Constant.methodCalled.method.equals("checkConnection")) {
             Constant.result.success(checkConnection());
+        } else if (Constant.methodCalled.method.equals("isWifiEnabled")) {
+            Constant.result.success(isWifiEnabled());
         }
     }
 
@@ -259,12 +260,16 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
         return wifiList;
     }
 
-    private static boolean checkConnection(){
-        if (wifiUtils.isConnected()){
+    private static boolean checkConnection() {
+        if (wifiUtils.isConnected()) {
             return true;
-        }else {
+        } else {
             return false;
         }
+    }
+
+    private static boolean isWifiEnabled() {
+        return wifiUtils.checkIsWifiEnabled();
     }
 
     private void requestLocationPermission() {
@@ -293,11 +298,11 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
     }
 
 
-    public static void enableWifi(){
+    public static void enableWifi() {
         wifiUtils.enableWifi();
     }
 
-    public static void disableWifi(){
+    public static void disableWifi() {
         wifiUtils.disableWifi();
     }
 
@@ -310,7 +315,7 @@ public class WifiConfigurationPlugin implements MethodCallHandler {
             if (wifiUtils.isConnectedWifi())
                 return 0;
             else return 1;
-        } else  return 2;
+        } else return 2;
     }
 
     public static int isConnectionFast() {

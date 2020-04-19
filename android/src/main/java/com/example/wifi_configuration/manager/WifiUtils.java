@@ -232,6 +232,10 @@ public final class WifiUtils implements WifiConnectorBuilder,
         return this;
     }
 
+    public boolean checkIsWifiEnabled(){
+        return mWifiManager.isWifiEnabled();
+    }
+
     
     @Override
     public WifiSuccessListener connectWith( final String ssid,  final String password) {

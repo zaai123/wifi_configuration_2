@@ -1,7 +1,7 @@
 name: wifi_configuration_2
 description: This  Flutter Wifi Plugin is an updated version of Wifi_configuration. Currently tested on android & working quite well iOS functions are very welcome
 
-version: 1.0.6
+version: 1.0.7
 documentation: "https://flutter.dev/docs"
 homepage: "https://github.com/zaai123/wifi_configuration_2"
 

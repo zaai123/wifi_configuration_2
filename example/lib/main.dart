@@ -31,7 +31,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   void getConnectionState() async {
-
     WifiConnectionStatus connectionStatus =
         await WifiConfiguration.connectToWifi(
             "DarkBe@rs", "DarkBe@rs", "com.example.wifi_configuration_example");
@@ -108,20 +107,16 @@ class _MyAppState extends State<MyApp> {
                       child: Text('Wifi disable')),
                   FlatButton(
                       onPressed: () {
-                        WifiConfiguration.getConnectionType().then((value){
+                        WifiConfiguration.getConnectionType().then((value) {
                           print('Connection type: ${value.toString()}');
                         });
 
-                        WifiConfiguration.isConnectionFast().then((value){
+                        WifiConfiguration.isConnectionFast().then((value) {
                           print('Connection type: ${value.toString()}');
                         });
-
-
                       },
                       child: Text('Print information')),
-
                   Divider(),
-
                   Expanded(
                     child: ListView.builder(
                       itemBuilder: (context, index) {
@@ -142,8 +137,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   void checkConnection() async {
+    WifiConfiguration.isWifiEnabled().then((value) {
+      print('Is wifi enabled: ${value.toString()}');
+    });
 
-    WifiConfiguration.checkConnection().then((value){
+    WifiConfiguration.checkConnection().then((value) {
       print('Value: ${value.toString()}');
     });
 
