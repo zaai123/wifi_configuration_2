@@ -34,6 +34,13 @@ Import package
 import 'wifi_configuration_2.dart';
 ```
 
+Check whether Wifi is enabled or disabled
+````dart
+WifiConfiguration.isWifiEnabled().then((value) {
+      print('Is wifi enabled: ${value.toString()}');
+    });
+````
+
 Get WIFI network list
 
 ````dart
