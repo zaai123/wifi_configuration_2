@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wifi_configuration_2/wifi_configuration_2.dart';
 
+WifiConfiguration wifiConfiguration;
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -26,13 +28,14 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    wifiConfiguration = WifiConfiguration();
     //getConnectionState();
     checkConnection();
   }
 
   void getConnectionState() async {
     WifiConnectionStatus connectionStatus =
-        await WifiConfiguration.connectToWifi(
+        await wifiConfiguration.connectToWifi(
             "DarkBe@rs", "DarkBe@rs", "com.example.wifi_configuration_example");
     print("is Connected : ${connectionStatus}");
 //
@@ -82,12 +85,12 @@ class _MyAppState extends State<MyApp> {
                   child: Text("connect"),
                   onPressed: () async {
                     WifiConnectionObject connectionStatus =
-                        await WifiConfiguration.connectedToWifi();
+                        await wifiConfiguration.connectedToWifi();
                     print("Ip address : ${connectionStatus.ip}");
-                    WifiConfiguration.getConnectionType().then((value) {
+                    wifiConfiguration.getConnectionType().then((value) {
                       print('Connection type: ${value.toString()}');
                     });
-                    WifiConfiguration.isConnectionFast().then((value) {
+                    wifiConfiguration.isConnectionFast().then((value) {
                       print('Is connection fast: ${value.toString()}');
                     });
                   },
@@ -97,21 +100,23 @@ class _MyAppState extends State<MyApp> {
                 children: <Widget>[
                   FlatButton(
                       onPressed: () {
-                        WifiConfiguration.enableWifi();
+                        WifiConfiguration wifiConfiguration = WifiConfiguration();
+                        wifiConfiguration.enableWifi();
                       },
                       child: Text('Wifi enable')),
                   FlatButton(
                       onPressed: () {
-                        WifiConfiguration.disableWifi();
+                        WifiConfiguration wifiConfiguration = WifiConfiguration();
+                        wifiConfiguration.disableWifi();
                       },
                       child: Text('Wifi disable')),
                   FlatButton(
                       onPressed: () {
-                        WifiConfiguration.getConnectionType().then((value) {
+                        wifiConfiguration.getConnectionType().then((value) {
                           print('Connection type: ${value.toString()}');
                         });
 
-                        WifiConfiguration.isConnectionFast().then((value) {
+                        wifiConfiguration.isConnectionFast().then((value) {
                           print('Connection type: ${value.toString()}');
                         });
                       },
@@ -137,23 +142,23 @@ class _MyAppState extends State<MyApp> {
   }
 
   void checkConnection() async {
-    WifiConfiguration.isWifiEnabled().then((value) {
+    wifiConfiguration.isWifiEnabled().then((value) {
       print('Is wifi enabled: ${value.toString()}');
     });
 
-    WifiConfiguration.checkConnection().then((value) {
+    wifiConfiguration.checkConnection().then((value) {
       print('Value: ${value.toString()}');
     });
 
     WifiConnectionObject wifiConnectionObject =
-        await WifiConfiguration.connectedToWifi();
+        await wifiConfiguration.connectedToWifi();
     if (wifiConnectionObject != null) {
       getWifiList();
     }
   }
 
   Future<void> getWifiList() async {
-    wifiNetworkList = await WifiConfiguration.getWifiList();
+    wifiNetworkList = await wifiConfiguration.getWifiList();
     print('Network list lenght: ${wifiNetworkList.length.toString()}');
     setState(() {});
   }

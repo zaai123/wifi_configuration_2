@@ -34,9 +34,14 @@ Import package
 import 'wifi_configuration_2.dart';
 ```
 
+Initialize plugin
+```dart
+WifiConfiguration wifiConfiguration = WifiConfiguration();
+```
+
 Check whether Wifi is enabled or disabled
 ````dart
-WifiConfiguration.isWifiEnabled().then((value) {
+wifiConfiguration.isWifiEnabled().then((value) {
       print('Is wifi enabled: ${value.toString()}');
     });
 ````
@@ -44,37 +49,37 @@ WifiConfiguration.isWifiEnabled().then((value) {
 Get WIFI network list
 
 ````dart
- wifiNetworkList = await WifiConfiguration.getWifiList();
+ wifiNetworkList = await wifiConfiguration.getWifiList();
     setState(() {});
 ````
 
 Check your connection is slow or fast
 ```dart
-WifiConfiguration.isConnectionFast().then((value){
+wifiConfiguration.isConnectionFast().then((value){
                           print('Connection type: ${value.toString()}');
                         });
 ```
 
 Check your connection type
 ````dart
-  WifiConfiguration.getConnectionType().then((value){
+  wifiConfiguration.getConnectionType().then((value){
                           print('Connection type: ${value.toString()}');
                         });
 ````
 
 Enable wifi
 ````dart
- WifiConfiguration.enableWifi();
+ wifiConfiguration.enableWifi();
 ````
 
 Disable Wifi
 ````dart
-WifiConfiguration.disableWifi();
+wifiConfiguration.disableWifi();
 ````
 
 Check internet connection
 ````dart
- WifiConfiguration.checkConnection().then((value){
+ wifiConfiguration.checkConnection().then((value){
       print('Value: ${value.toString()}');
     });
 ````
@@ -98,7 +103,7 @@ ListView.builder(
 ```
 
 ```dart
-    WifiConnectionStatus connectionStatus = await WifiConfiguration.connectToWifi("ssidName", "passName", "your android packagename");
+    WifiConnectionStatus connectionStatus = await wifiConfiguration.connectToWifi("ssidName", "passName", "your android packagename");
     //This will return state of a connection
     //Package name is required to redirect user to application permission settings page to let user allow location permission
     //in case connecting with wifi
@@ -131,17 +136,17 @@ ListView.builder(
             }
   
   
-        var listAvailableWifi = await WifiConfiguration.getWifiList();
+        var listAvailableWifi = await wifiConfiguration.getWifiList();
           //If wifi is available then device will get connected
           //In case of ios you will not get list of connected wifi an empty list will be available
           //As Apple does not allow to scan the available hotspot list
           //If you try to access with private api's then apple will reject the app
   
   
-        bool isConnected = await WifiConfiguration.isConnectedToWifi("ssidName");
+        bool isConnected = await wifiConfiguration.isConnectedToWifi("ssidName");
         //to get status if device connected to some wifi
         
-        String isConnected = await WifiConfiguration.connectedToWifi();
+        String isConnected = await wifiConfiguration.connectedToWifi();
                 //to get current connected wifi name
         
 ```

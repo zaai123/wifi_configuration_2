@@ -16,13 +16,13 @@ class WifiConfiguration {
   static const MethodChannel _channel =
       const MethodChannel('wifi_configuration');
 
-  static Future<String> get platformVersion async {
+   Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
 
     return version;
   }
 
-  static Future<WifiConnectionStatus> connectToWifi(
+   Future<WifiConnectionStatus> connectToWifi(
       String ssid, String password, String packageName) async {
     final String isConnected = await _channel.invokeMethod(
         'connectToWifi', <String, dynamic>{
@@ -57,7 +57,7 @@ class WifiConfiguration {
     }
   }
 
-  static Future<List<dynamic>> getWifiList() async {
+   Future<List<dynamic>> getWifiList() async {
     final List<dynamic> wifiList = await _channel.invokeMethod('getWifiList');
     //return wifiList;
     print('Wifi list length: ${wifiList.length.toString()}');
@@ -67,13 +67,13 @@ class WifiConfiguration {
     return wifiNetworkList;
   }
 
-  static Future<bool> isConnectedToWifi(String ssid) async {
+   Future<bool> isConnectedToWifi(String ssid) async {
     final bool isConnected = await _channel
         .invokeMethod('isConnectedToWifi', <String, dynamic>{"ssid": ssid});
     return isConnected;
   }
 
-  static Future<WifiConnectionObject> connectedToWifi() async {
+   Future<WifiConnectionObject> connectedToWifi() async {
     final Map<dynamic, dynamic> connectedWifiMap =
         await _channel.invokeMethod('connectedToWifi');
     WifiConnectionObject wifiConnectionObject =
@@ -82,7 +82,7 @@ class WifiConfiguration {
     return wifiConnectionObject;
   }
 
-  static Future<ConnectionType> getConnectionType() async {
+   Future<ConnectionType> getConnectionType() async {
     final int connection = await _channel.invokeMethod('getConnectionType');
     //print('Connection: ${connection.toString()}');
     return connection == 0
@@ -92,25 +92,25 @@ class WifiConfiguration {
             : ConnectionType.NOT_CONNECTED;
   }
 
-  static Future<bool> isConnectionFast() async {
+   Future<bool> isConnectionFast() async {
     final int checkConnection = await _channel.invokeMethod('isConnectionFast');
     return checkConnection == 1 ? true : false;
   }
 
-  static Future<void> enableWifi() async {
+   Future<void> enableWifi() async {
     _channel.invokeMethod('enableWifi');
   }
 
-  static Future<void> disableWifi() async {
+   Future<void> disableWifi() async {
     _channel.invokeMethod('disableWifi');
   }
 
-  static Future<bool> checkConnection() async {
+   Future<bool> checkConnection() async {
     final bool isConnected = await _channel.invokeMethod('checkConnection');
     return isConnected;
   }
 
-  static Future<bool> isWifiEnabled() async{
+   Future<bool> isWifiEnabled() async{
     final bool isEnabled = await _channel.invokeMethod('isWifiEnabled');
     return isEnabled;
   }
