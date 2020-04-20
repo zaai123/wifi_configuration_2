@@ -13,7 +13,7 @@ enum WifiConnectionStatus {
 }
 
 class WifiConfiguration {
-  static const MethodChannel _channel =
+    MethodChannel _channel =
       const MethodChannel('wifi_configuration');
 
    Future<String> get platformVersion async {

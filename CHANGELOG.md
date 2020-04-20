@@ -1,4 +1,4 @@
-## 1.0.7
+## 1.0.8
 
 ## Check whether Wifi is enabled or disabled
 ## Check internet connection 
