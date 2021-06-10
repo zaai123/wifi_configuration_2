@@ -185,10 +185,6 @@ public final class ConnectorUtils {
         if (id == -1)
             return false;
 
-        if (!wifiManager.saveConfiguration()) {
-            WifiUtils.wifiLog("Couldn't save wifi config");
-            return false;
-        }
         // We have to retrieve the WifiConfiguration after save
         config = ConfigSecurities.getWifiConfiguration(wifiManager, config);
         if (config == null) {
